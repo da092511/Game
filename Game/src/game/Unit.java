@@ -4,6 +4,7 @@ public class Unit {
 	private int curHp;
 	private int maxHp;
 	private int power;
+	
 	private String name;
 	private String state = "노말";
 	
@@ -56,5 +57,12 @@ public class Unit {
 		System.out.println("[" + name + "] [" + curHp + "/" + maxHp + "] [" + power + "]");
 	}
 	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public String getName() {
+		return this.name;
+	}
 	
 }

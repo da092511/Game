@@ -4,7 +4,7 @@ import java.util.Random;
 import java.util.Vector;
 
 public class UnitManager {
-	Vector<Player> playerList = new Vector<>();
+	Vector<Unit> playerList = new Vector<>();
 	Vector<Unit> monList = new Vector<>();
 	String path = "game." ;
 	String players[] = {"warrior" , "witch", "hiller"};
@@ -16,7 +16,7 @@ public class UnitManager {
 			try {
 				Class<?> clazz = Class.forName(path + players[i]);
 				Object obj = clazz.getDeclaredConstructor().newInstance(); // clazz.newInstance();
-				Player temp = (Player) obj;
+				Unit temp = (Unit) obj;
 				int hp = ran.nextInt(501) + 500;
 				int pow = ran.nextInt(56) + 45;
 				temp.init(hp, pow);
