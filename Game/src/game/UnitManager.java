@@ -7,12 +7,13 @@ public class UnitManager {
 	Vector<Player> playerList = new Vector<>();
 	Vector<Unit> monList = new Vector<>();
 	String path = "game." ;
+	String players[] = {"warrior" , "witch", "hiller"};
 	String mons[] = {"UnitWolf", "UnitBat", "UnitOrc"};
 	Random ran = new Random();
 	
 	public UnitManager() {
 		playerList.add(new Player("전사", 1000, 45));
-		playerList.add(new Player("마법사", 800, 60));
+		playerList.add(new Player("마녀", 800, 60));
 		playerList.add(new Player("힐러" , 500, 70));
 	}
 	
