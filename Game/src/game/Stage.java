@@ -1,5 +1,8 @@
 package game;
 
-public class Stage {
+public abstract class Stage {
 
+	public abstract boolean update();
+	
+	
 }
