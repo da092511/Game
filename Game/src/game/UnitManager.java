@@ -12,9 +12,20 @@ public class UnitManager {
 	Random ran = new Random();
 	
 	public UnitManager() {
-		playerList.add(new Player("전사", 1000, 45));
-		playerList.add(new Player("마녀", 800, 60));
-		playerList.add(new Player("힐러" , 500, 70));
+		for (int i = 0; i < 3; i++) {
+			try {
+				Class<?> clazz = Class.forName(path + players[i]);
+				Object obj = clazz.getDeclaredConstructor().newInstance(); // clazz.newInstance();
+				Player temp = (Player) obj;
+				int hp = ran.nextInt(501) + 500;
+				int pow = ran.nextInt(56) + 45;
+				temp.init(hp, pow);
+				playerList.add(temp);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
 	}
 	
 	public void monsterRandomSet(int size) {
