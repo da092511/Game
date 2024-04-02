@@ -80,6 +80,10 @@ abstract public class Unit {
 		
 	}
 	
+	public int getMaxHp() {
+		return this.maxHp;
+	}
+	
 	abstract public void skill();
 	abstract public void skill(Unit target);
 	
