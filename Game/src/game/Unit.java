@@ -39,6 +39,9 @@ abstract public class Unit {
 	}
 	
 	public void setCurHp(int curHp) {
+		if(curHp < 0 )
+			curHp = 0;
+		
 		this.curHp = curHp;
 	}
 	
