@@ -6,28 +6,30 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class GameManager {
-	Random ran = new Random();
-	static Scanner scan = new Scanner(System.in);
-	static String nextStage = "";
-	String curStage = "";
+	private Random ran = new Random();
+	public static Scanner scan = new Scanner(System.in);
+	public static String nextStage = "";
+	private String curStage = "";
+	
 	Map<String, Stage> stageList = new HashMap<String, Stage>();
-
+	
+	private int n ;
+	private String stage = "Round";
+	
 	GameManager() {
-
-		stageList.put("TITLE", new StageTitle());
-		stageList.put("BATTLE", new StageBattle());
+		stageList.put("Forest of Dream", new StageTitle());
 		stageList.put("LOBBY", new StageLobby());
+		stageList.put("BATTLE", new StageBattle());
 		
+		nextStage = "Forest of Dream";
 	}
 
 	boolean changeStage() {
-		System.out.println("curStage : " + curStage);
-		System.out.println("nextStage : " + nextStage);
-
 		if (curStage.equals(nextStage))
 			return true;
 
 		curStage = nextStage;
+		
 		Stage stage = stageList.get(curStage);
 		stage.init();
 

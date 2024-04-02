@@ -1,5 +1,8 @@
 package game;
 
-public class UnitWolf {
+public class UnitWolf extends Unit{
 
+	public UnitWolf(){
+		super.setName("늑대");
+	}
 }

@@ -2,8 +2,8 @@ package game;
 
 public class Witch extends Unit {
 	
-	public Witch(String na, int max, int pow) {
-		super(na,max,pow);
+	public Witch() {
+		super.setName("마녀");
 	}
 	
 	public void skill() {

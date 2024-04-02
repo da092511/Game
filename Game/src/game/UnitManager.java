@@ -7,7 +7,7 @@ public class UnitManager {
 	Vector<Unit> playerList = new Vector<>();
 	Vector<Unit> monList = new Vector<>();
 	String path = "game." ;
-	String players[] = {"warrior" , "witch", "hiller"};
+	String players[] = {"Warrior" , "Witch", "Hiller"};
 	String mons[] = {"UnitWolf", "UnitBat", "UnitOrc"};
 	Random ran = new Random();
 	
@@ -17,9 +17,13 @@ public class UnitManager {
 				Class<?> clazz = Class.forName(path + players[i]);
 				Object obj = clazz.getDeclaredConstructor().newInstance(); // clazz.newInstance();
 				Unit temp = (Unit) obj;
-				int hp = ran.nextInt(501) + 500;
-				int pow = ran.nextInt(56) + 45;
-				temp.init(hp, pow);
+				int hp = ran.nextInt(6) + 5;
+				int pow = ran.nextInt(10) + 10;
+				
+				hp = hp *100;
+				pow = pow * 5;
+				
+				temp.init(hp, pow);  	//super : Unit
 				playerList.add(temp);
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -37,6 +41,7 @@ public class UnitManager {
 				Unit temp = (Unit) obj;
 				int hp = ran.nextInt(100) + 100;
 				int pow = ran.nextInt(10) + 10;
+				
 				temp.init(hp, pow);
 				monList.add(temp);
 			} catch (Exception e) {

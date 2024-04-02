@@ -5,8 +5,6 @@ import java.util.Scanner;
 import java.util.Vector;
 
 public class StageBattle extends Stage {
-	private Scanner scan = new Scanner(System.in);
-	
 	UnitManager unitManager = new UnitManager();
 	Vector<Unit> playerList = null;
 	Vector<Unit> monList = null;
@@ -25,7 +23,7 @@ public class StageBattle extends Stage {
 		playerDead = playerList.size();
 	}
 
-	void print_character() {
+	void printCharacter() {
 		System.out.println("======[BATTLE]======");
 		// System.out.println(playerSize + " " + monSize);
 		System.out.println("======[PLAYER]======");
@@ -38,13 +36,15 @@ public class StageBattle extends Stage {
 		}
 	}
 
-	void player_attack(int index) {
+	void playerAttack(int index) {
 		Unit p = playerList.get(index);
 		if (p.getCurHp() <= 0)
 			return;
 		System.out.println("======[메뉴 선택]=====");
 		System.out.println("[" + p.getName() + "] [1.어택] [2.스킬]");
 		int sel = GameManager.scan.nextInt();
+		
+		System.out.println("======[Attack]=====");
 		if (sel == 1) {
 			while (true) {
 				int idx = ran.nextInt(monList.size());
@@ -71,7 +71,7 @@ public class StageBattle extends Stage {
 		}
 	}
 
-	void check_live() {
+	void checkLive() {
 		int num = 0;
 		for (int i = 0; i < playerList.size(); i++) {
 			if (playerList.get(i).getCurHp() <= 0) {
@@ -91,33 +91,36 @@ public class StageBattle extends Stage {
 
 	public boolean update() {
 		boolean run = true;
-		int p_index = 0;
-		int m_index = 0;
+		int pIndex = 0;
+		int mIndex = 0;
 		boolean turn = true;
 
 		while (run) {
 			// print_character();
 			if (turn) {
-				print_character();
-				if (p_index < playerList.size()) {
-					player_attack(p_index);
+				printCharacter();
+				if (pIndex < playerList.size()) {
+					playerAttack(pIndex);
 
-					p_index += 1;
+					pIndex += 1;
+					turn = !turn;
 				} else {
 					turn = !turn;
-					p_index = 0;
+					pIndex = 0;
 				}
 
 			} else if (!turn) {
-				if (m_index < monList.size()) {
-					monster_attack(m_index);
-					m_index += 1;
+				if (mIndex < monList.size()) {
+					if(mIndex == 0)
+						System.out.println("====[Attacked]====");
+					monster_attack(mIndex);
+					mIndex += 1;
 				} else {
 					turn = !turn;
-					m_index = 0;
+					mIndex = 0;
 				}
 			}
-			check_live();
+			checkLive();
 			if (monDead <= 0 || playerDead <= 0)
 				break;
 		}
