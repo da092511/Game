@@ -12,5 +12,9 @@ public class UnitBat extends Unit{
 	
 	@Override
 	public void skill(Unit target) {
+		System.out.println("[" + super.getName() + "]가 " + "[" + target.getName() + "]를 기절시킵니다.");
+		
+		if(!target.getIsFaint())
+			target.setFaint();
 	}
 }
