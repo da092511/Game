@@ -43,7 +43,6 @@ public class Unit {
 	}
 	
 	public void attack(Unit target) {
-		System.out.println(name);
 		int hp = target.getCurHp() - power;
 		
 		System.out.println("[" + name + "]가 " + "[" + target.name + "]에게 " + power + "의 데미지를 입힙니다. ");
