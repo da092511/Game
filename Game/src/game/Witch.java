@@ -17,5 +17,7 @@ public class Witch extends Unit {
 		
 		if(!target.getIsFaint())
 			target.setFaint();
+		else 
+			System.err.println("실패");
 	}
 }

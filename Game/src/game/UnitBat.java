@@ -14,7 +14,9 @@ public class UnitBat extends Unit{
 	public void skill(Unit target) {
 		System.out.println("[" + super.getName() + "]가 " + "[" + target.getName() + "]를 기절시킵니다.");
 		
-		if(!target.getIsFaint())
+		if(!target.getIsFaint()) {
 			target.setFaint();
+		}else 
+			System.err.println("스킬 실패");
 	}
 }
