@@ -88,8 +88,20 @@ public class StageBattle extends Stage {
 			playerSkill(p);
 		}
 	}
+	
+	private void monSkill(Unit m) {
+		m.skill();
+		if(m instanceof UnitBat) {
+			for(Unit target : playerList)
+				m.skill(target);
+			return;
+		}
+		
+		int rIdx = ran.nextInt(3);
+		m.skill(playerList.get(rIdx));
+	}
 
-	private void monster_attack(int index) {
+	private void monsterAttack(int index) {
 		Unit m = monList.get(index);
 		
 		if (m.getCurHp() <= 0)
@@ -106,7 +118,8 @@ public class StageBattle extends Stage {
 			else if (playerList.get(idx).getCurHp() > 0) {
 				//skill
 				if(attack == 1) {
-				//	monsterSkill(m);
+				//	monSkill(m);
+					break;
 				}
 				//attack
 				m.attack(playerList.get(idx));
@@ -156,7 +169,7 @@ public class StageBattle extends Stage {
 				if (mIndex < monList.size()) {
 					if(mIndex == 0)
 						System.out.println("====[Attacked]====");
-					monster_attack(mIndex);
+					monsterAttack(mIndex);
 					mIndex += 1;
 				} else {
 					turn = !turn;
