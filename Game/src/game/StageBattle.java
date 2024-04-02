@@ -48,19 +48,12 @@ public class StageBattle extends Stage {
 			
 			for(Unit target : playerList)
 				hiller.skill(target);
-		}
-		else if(p instanceof Warrior) {
-			Warrior warrior = (Warrior) p;
 			
-			for(Unit target : monList)
-				warrior.skill(target);
+			return;
 		}
-		else if(p instanceof Witch) {
-			Witch witch = (Witch) p;
-			
-			for(Unit target : monList)
-				witch.skill(target);
-		}
+		
+		for(Unit target : monList)
+			p.skill(target);
 	}
 
 	private void playerAttack(int index) {
@@ -76,16 +69,22 @@ public class StageBattle extends Stage {
 			while (true) {
 				int idx = ran.nextInt(monList.size());
 				
-				if (p.getIsFaint())
+				if (p.getIsFaint()) {
+					p.setFaint();
 					break;
-				
+				}
 				else if (monList.get(idx).getCurHp() > 0) {
 					p.attack(monList.get(idx));
 					break;
 				}
 			}
 		} else if (sel == 2) {
+			if (p.getIsFaint()) {
+				p.setFaint();
+				return;
+			}
 			//skill
+			p.skill();
 			playerSkill(p);
 		}
 	}
