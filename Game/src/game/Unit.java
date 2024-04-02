@@ -1,6 +1,6 @@
 package game;
 
-public class Unit {
+abstract public class Unit {
 	private int curHp;
 	private int maxHp;
 	private int power;
@@ -79,5 +79,8 @@ public class Unit {
 		this.isFaint = !isFaint;
 		
 	}
+	
+	abstract public void skill();
+	abstract public void skill(Unit target);
 	
 }

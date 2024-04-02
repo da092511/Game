@@ -5,11 +5,13 @@ public class Witch extends Unit {
 	public Witch() {
 		super.setName("마녀");
 	}
-	
+
+	@Override
 	public void skill() {
 		System.out.println("적 1턴 무효화");
 	}
 	
+	@Override
 	public void skill(Unit target) {
 		System.out.println("[" + super.getName() + "]가 " + "[" + target.getName() + "]를 기절시킵니다.");
 		

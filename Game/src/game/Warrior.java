@@ -11,6 +11,7 @@ public class Warrior extends Witch {
 		System.out.println("적 전체에게 데미지");
 	}
 	
+	@Override
 	public void skill(Unit target) {
 		int power = super.getPower();
 		System.out.println("[" + super.getName() + "]가 " + "[" + target.getName() + "]에게 " + power + "의 데미지를 입힙니다. ");
@@ -18,5 +19,4 @@ public class Warrior extends Witch {
 		int hp = target.getCurHp() - power;
 		target.setCurHp(hp);
 	}
-
 }
