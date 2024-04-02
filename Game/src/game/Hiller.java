@@ -13,12 +13,15 @@ public class Hiller extends Unit{
 
 	@Override
 	public void skill(Unit target) {
-		System.out.println(super.getName() + "가 " + target.getName()+"을 힐 +30Hp");
-		
 		int hp = target.getCurHp() + 30;
 		
 		if(hp > target.getMaxHp())
 			hp = target.getMaxHp();
+		
+		else if(hp == 30)
+			return;
+		
+		System.out.println(super.getName() + "가 " + target.getName()+"을 힐 +30Hp");
 		
 		target.setCurHp(hp);
 	}
