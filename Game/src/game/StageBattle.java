@@ -82,6 +82,7 @@ public class StageBattle extends Stage {
 			}
 		} else if (sel == 2) {
 			if (p.getIsFaint()) {
+				System.err.println(p.getName() + "는 기절상태입니다.");
 				p.setFaint();
 				return;
 			}
@@ -139,7 +140,7 @@ public class StageBattle extends Stage {
 			}
 		}
 		playerDead = playerList.size() - num;
-		System.out.println(playerDead);
+		
 		num = 0;
 		for (int i = 0; i < monList.size(); i++) {
 			if (monList.get(i).getCurHp() <= 0) {
