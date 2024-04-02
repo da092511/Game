@@ -30,7 +30,7 @@ public class StageBattle extends Stage {
 		roundNum ++;
 	}
 
-	void printCharacter() {
+	private void printCharacter() {
 		System.out.println("======["+curRound+"]======");
 		System.out.println("======[PLAYER]======");
 		for (int i = 0; i < playerList.size(); i++) {
@@ -41,8 +41,29 @@ public class StageBattle extends Stage {
 			monList.get(i).printData();
 		}
 	}
+	
+	private void playerSkill(Unit p) {
+		if(p instanceof Hiller) {
+			Hiller hiller = (Hiller) p;
+			
+			for(Unit target : playerList)
+				hiller.skill(target);
+		}
+		else if(p instanceof Warrior) {
+			Warrior warrior = (Warrior) p;
+			
+			for(Unit target : monList)
+				warrior.skill(target);
+		}
+		else if(p instanceof Witch) {
+			Witch witch = (Witch) p;
+			
+			for(Unit target : monList)
+				witch.skill(target);
+		}
+	}
 
-	void playerAttack(int index) {
+	private void playerAttack(int index) {
 		Unit p = playerList.get(index);
 		if (p.getCurHp() <= 0)
 			return;
@@ -57,6 +78,7 @@ public class StageBattle extends Stage {
 				
 				if (p.getIsFaint())
 					break;
+				
 				else if (monList.get(idx).getCurHp() > 0) {
 					p.attack(monList.get(idx));
 					break;
@@ -64,29 +86,37 @@ public class StageBattle extends Stage {
 			}
 		} else if (sel == 2) {
 			//skill
-			
+			playerSkill(p);
 		}
 	}
 
-	void monster_attack(int index) {
+	private void monster_attack(int index) {
 		Unit m = monList.get(index);
+		
 		if (m.getCurHp() <= 0)
 			return;
+		
 		while (true) {
 			int idx = ran.nextInt(playerList.size());
+			int attack = ran.nextInt(4);
 			
-			if (m.getIsFaint())
+			if (m.getIsFaint()) {
+				m.setFaint();
 				break;
+			}
 			else if (playerList.get(idx).getCurHp() > 0) {
 				//skill
-				
+				if(attack == 1) {
+				//	monsterSkill(m);
+				}
+				//attack
 				m.attack(playerList.get(idx));
 				break;
 			}
 		}
 	}
 
-	void checkLive() {
+	private void checkLive() {
 		int num = 0;
 		for (int i = 0; i < playerList.size(); i++) {
 			if (playerList.get(i).getCurHp() <= 0) {
@@ -120,7 +150,6 @@ public class StageBattle extends Stage {
 					pIndex += 1;
 					turn = !turn;
 				} else {
-					turn = !turn;
 					pIndex = 0;
 				}
 
