@@ -5,13 +5,17 @@ import java.util.Scanner;
 import java.util.Vector;
 
 public class StageBattle extends Stage {
-	UnitManager unitManager = new UnitManager();
-	Vector<Unit> playerList = null;
-	Vector<Unit> monList = null;
-	Random ran = new Random();
-	int monDead = 0;
-	int playerDead = 0;
-
+	private UnitManager unitManager = new UnitManager();
+	private Vector<Unit> playerList = null;
+	private Vector<Unit> monList = null;
+	private Random ran = new Random();
+	
+	private int monDead = 0;
+	private int playerDead = 0;
+	
+	private int roundNum = 1;
+	private String curRound;
+	
 	public void init() {
 		unitManager.monList.clear();
 		unitManager.monsterRandomSet(4);
@@ -21,11 +25,13 @@ public class StageBattle extends Stage {
 		monList = unitManager.monList;
 		monDead = monList.size();
 		playerDead = playerList.size();
+		
+		curRound = String.format("%dRound", roundNum);
+		roundNum ++;
 	}
 
 	void printCharacter() {
-		System.out.println("======[BATTLE]======");
-		// System.out.println(playerSize + " " + monSize);
+		System.out.println("======["+curRound+"]======");
 		System.out.println("======[PLAYER]======");
 		for (int i = 0; i < playerList.size(); i++) {
 			playerList.get(i).printData();
