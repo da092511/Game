@@ -7,6 +7,6 @@ public class Witch extends Unit {
 	}
 	
 	public void skill() {
-		
+		System.out.println("적 1턴 무효화");
 	}
 }
