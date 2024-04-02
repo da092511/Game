@@ -60,10 +60,6 @@ public class StageBattle extends Stage {
 		Unit p = playerList.get(index);
 		if (p.getCurHp() <= 0)
 			return;
-		else if(p.getIsFaint()) {
-			System.err.println(p.getName() + "는 기절상태입니다.");
-			return;
-		}
 		
 		System.out.println("======[메뉴 선택]=====");
 		System.out.println("[" + p.getName() + "] [1.어택] [2.스킬]");
@@ -75,6 +71,7 @@ public class StageBattle extends Stage {
 				int idx = ran.nextInt(monList.size());
 				
 				if (p.getIsFaint()) {
+					System.err.println(p.getName() + "는 기절상태입니다.");
 					p.setFaint();
 					break;
 				}
@@ -111,16 +108,13 @@ public class StageBattle extends Stage {
 		
 		if (m.getCurHp() <= 0)
 			return;
-		else if(m.getIsFaint()) {
-			System.err.println(m.getName() + "는 기절상태입니다.");
-			return;
-		}
 		
 		while (true) {
 			int idx = ran.nextInt(playerList.size());
 			int attack = ran.nextInt(20);
 			
 			if (m.getIsFaint()) {
+				System.err.println(m.getName() + "는 기절상태입니다.");
 				m.setFaint();
 				break;
 			}
@@ -145,6 +139,7 @@ public class StageBattle extends Stage {
 			}
 		}
 		playerDead = playerList.size() - num;
+		System.out.println(playerDead);
 		num = 0;
 		for (int i = 0; i < monList.size(); i++) {
 			if (monList.get(i).getCurHp() <= 0) {
