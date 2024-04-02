@@ -64,7 +64,7 @@ public class StageBattle extends Stage {
 		System.out.println("[" + p.getName() + "] [1.어택] [2.스킬]");
 		int sel = GameManager.scan.nextInt();
 		
-		System.out.println("======[Attack]=====");
+		System.out.println("=======[Attack]=====");
 		if (sel == 1) {
 			while (true) {
 				int idx = ran.nextInt(monList.size());
@@ -97,7 +97,7 @@ public class StageBattle extends Stage {
 			return;
 		}
 		
-		int rIdx = ran.nextInt(3);
+		int rIdx = ran.nextInt(playerList.size());
 		m.skill(playerList.get(rIdx));
 	}
 
@@ -109,7 +109,7 @@ public class StageBattle extends Stage {
 		
 		while (true) {
 			int idx = ran.nextInt(playerList.size());
-			int attack = ran.nextInt(4);
+			int attack = ran.nextInt(20);
 			
 			if (m.getIsFaint()) {
 				m.setFaint();
@@ -118,7 +118,7 @@ public class StageBattle extends Stage {
 			else if (playerList.get(idx).getCurHp() > 0) {
 				//skill
 				if(attack == 1) {
-				//	monSkill(m);
+					monSkill(m);
 					break;
 				}
 				//attack
@@ -170,7 +170,7 @@ public class StageBattle extends Stage {
 					if(mIndex == 0)
 						System.out.println("====[Attacked]====");
 					monsterAttack(mIndex);
-					mIndex += 1;
+					mIndex ++;
 				} else {
 					turn = !turn;
 					mIndex = 0;
