@@ -18,8 +18,10 @@ public class UnitWolf extends Unit{
 		
 		int hp = target.getCurHp() - power;
 		
-		if(hp < 0)
+		if(hp <= 0) {
+			System.out.println("[" + target.getName() + "]을 처치하였습니다.");
 			hp = 0;
+		}
 		
 		target.setCurHp(hp);
 	}
