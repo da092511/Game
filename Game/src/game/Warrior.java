@@ -8,7 +8,7 @@ public class Warrior extends Witch {
 	
 	@Override
 	public void skill() {
-		super.skill();
+		System.out.println("적 전체에게 데미지");
 	}
 
 }
