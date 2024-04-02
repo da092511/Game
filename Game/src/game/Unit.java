@@ -8,6 +8,8 @@ public class Unit {
 	private String name;
 	private String state = "노말";
 	
+	private boolean isFaint;
+	
 	public Unit() {
 		
 	}
@@ -41,6 +43,7 @@ public class Unit {
 	}
 	
 	public void attack(Unit target) {
+		System.out.println(name);
 		int hp = target.getCurHp() - power;
 		
 		System.out.println("[" + name + "]가 " + "[" + target.name + "]에게 " + power + "의 데미지를 입힙니다. ");
@@ -63,6 +66,15 @@ public class Unit {
 	
 	public String getName() {
 		return this.name;
+	}
+	
+	public boolean getIsFaint() {
+		return this.isFaint;
+	}
+	
+	public void setFaint() {
+		this.isFaint = !isFaint;
+		
 	}
 	
 }
