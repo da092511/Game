@@ -48,13 +48,17 @@ public class StageBattle extends Stage {
 		if (sel == 1) {
 			while (true) {
 				int idx = ran.nextInt(monList.size());
-
-				if (monList.get(idx).getCurHp() > 0) {
+				
+				if (p.getIsFaint())
+					break;
+				else if (monList.get(idx).getCurHp() > 0) {
 					p.attack(monList.get(idx));
 					break;
 				}
 			}
 		} else if (sel == 2) {
+			//skill
+			
 		}
 	}
 
@@ -64,7 +68,12 @@ public class StageBattle extends Stage {
 			return;
 		while (true) {
 			int idx = ran.nextInt(playerList.size());
-			if (playerList.get(idx).getCurHp() > 0) {
+			
+			if (m.getIsFaint())
+				break;
+			else if (playerList.get(idx).getCurHp() > 0) {
+				//skill
+				
 				m.attack(playerList.get(idx));
 				break;
 			}
