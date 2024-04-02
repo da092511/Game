@@ -67,6 +67,10 @@ public class Unit {
 		return this.name;
 	}
 	
+	public int getPower() {
+		return this.power;
+	}
+	
 	public boolean getIsFaint() {
 		return this.isFaint;
 	}
