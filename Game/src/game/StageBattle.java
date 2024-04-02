@@ -60,6 +60,11 @@ public class StageBattle extends Stage {
 		Unit p = playerList.get(index);
 		if (p.getCurHp() <= 0)
 			return;
+		else if(p.getIsFaint()) {
+			System.err.println(p.getName() + "는 기절상태입니다.");
+			return;
+		}
+		
 		System.out.println("======[메뉴 선택]=====");
 		System.out.println("[" + p.getName() + "] [1.어택] [2.스킬]");
 		int sel = GameManager.scan.nextInt();
@@ -106,6 +111,10 @@ public class StageBattle extends Stage {
 		
 		if (m.getCurHp() <= 0)
 			return;
+		else if(m.getIsFaint()) {
+			System.err.println(m.getName() + "는 기절상태입니다.");
+			return;
+		}
 		
 		while (true) {
 			int idx = ran.nextInt(playerList.size());
@@ -153,7 +162,6 @@ public class StageBattle extends Stage {
 		boolean turn = true;
 
 		while (run) {
-			// print_character();
 			if (turn) {
 				printCharacter();
 				if (pIndex < playerList.size()) {
