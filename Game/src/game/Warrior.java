@@ -17,6 +17,10 @@ public class Warrior extends Witch {
 		System.out.println("[" + super.getName() + "]가 " + "[" + target.getName() + "]에게 " + power + "의 데미지를 입힙니다. ");
 		
 		int hp = target.getCurHp() - power;
+		
+		if(hp < 0)
+			hp = 0;
+		
 		target.setCurHp(hp);
 	}
 }
