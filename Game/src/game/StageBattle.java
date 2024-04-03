@@ -94,7 +94,7 @@ public class StageBattle extends Stage {
 	
 	private void monSkill(Unit m) {
 		m.skill();
-		if(m instanceof UnitBat) {
+		if(m instanceof UnitWolf) {
 			for(Unit target : playerList)
 				m.skill(target);
 			return;
