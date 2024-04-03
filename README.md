@@ -51,7 +51,7 @@
 
 ---
 
-## Class Diagram(UML)
+## Unit Diagram(UML)
 
 <img src="image/Game.jpg">
 
