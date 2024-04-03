@@ -165,8 +165,9 @@ public class StageBattle extends Stage {
 
 					pIndex += 1;
 					turn = !turn;
-				} else {
-					pIndex = 0;
+					
+					if(pIndex == playerList.size())
+						pIndex = 0;
 				}
 
 			} else if (!turn) {
