@@ -23,7 +23,7 @@ public class Hiller extends Unit{
 		if(hp > target.getMaxHp())
 			hp = target.getMaxHp();
 		
-		System.out.println(super.getName() + "가 " + target.getName()+"을 힐 +30Hp");
+		System.out.println(super.getName() + "가 " + target.getName()+"를 힐 +30Hp");
 		
 		target.setCurHp(hp);
 	}
