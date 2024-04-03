@@ -16,6 +16,7 @@ public class UnitBat extends Unit{
 		
 		if(!target.getIsFaint()) {
 			target.setFaint();
+			System.out.println("스킬 성공");
 		}else 
 			System.err.println("스킬 실패");
 	}
